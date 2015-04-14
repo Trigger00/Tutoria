@@ -1,12 +1,16 @@
 package com.unalm.tutoria.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -58,6 +62,9 @@ public class Profesor implements Serializable{
 	@Column(name = "perso")
 	private Long perso;
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "profesor")
+	private Set<ConsejeroEntity> consejeroEntity = new HashSet<ConsejeroEntity>(
+			0);
 	
 	
 
@@ -176,4 +183,15 @@ public class Profesor implements Serializable{
 	public void setPerso(Long perso) {
 		this.perso = perso;
 	}
+
+	public Set<ConsejeroEntity> getConsejeroEntity() {
+		return consejeroEntity;
+	}
+
+	public void setConsejeroEntity(Set<ConsejeroEntity> consejeroEntity) {
+		this.consejeroEntity = consejeroEntity;
+	}
+	
+	
+	
 }
