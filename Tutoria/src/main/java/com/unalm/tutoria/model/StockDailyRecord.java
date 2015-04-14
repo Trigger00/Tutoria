@@ -1,100 +1,107 @@
 package com.unalm.tutoria.model;
+ 
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
- 
+import javax.persistence.UniqueConstraint;
+
 @Entity
-@Table(name = "stock_detail", catalog = "elbernab")
+@Table(name = "stock_daily_record", catalog = "elbernab")
 public class StockDailyRecord implements java.io.Serializable {
- 
-	private Integer stockId;
+
+	private Integer recordId;
 	private Stock stock;
-	private String compName;
-	private String compDesc;
-	private String remark;
-	private Date listedDate;
- 
+	private Integer priceOpen;
+	private Integer priceClose;
+	private Integer priceChange;
+	private Integer volume;
+
+
 	public StockDailyRecord() {
 	}
- 
-	public StockDailyRecord(Stock stock, String compName, String compDesc,
-			String remark, Date listedDate) {
+
+	public StockDailyRecord(Stock stock, Date date) {
 		this.stock = stock;
-		this.compName = compName;
-		this.compDesc = compDesc;
-		this.remark = remark;
-		this.listedDate = listedDate;
+	
 	}
- 
-	@GenericGenerator(name = "generator", strategy = "foreign", 
-	parameters = @Parameter(name = "property", value = "stock"))
+
+	public StockDailyRecord(Stock stock, Integer priceOpen, Integer priceClose,
+			Integer priceChange, Integer volume, Date date) {
+		this.stock = stock;
+		this.priceOpen = priceOpen;
+		this.priceClose = priceClose;
+		this.priceChange = priceChange;
+		this.volume = volume;
+		
+	}
+
 	@Id
-	@GeneratedValue(generator = "generator")
-	@Column(name = "STOCK_ID", unique = true, nullable = false)
-	public Integer getStockId() {
-		return this.stockId;
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "RECORD_ID", unique = true, nullable = false)
+	public Integer getRecordId() {
+		return this.recordId;
 	}
- 
-	public void setStockId(Integer stockId) {
-		this.stockId = stockId;
+
+	public void setRecordId(Integer recordId) {
+		this.recordId = recordId;
 	}
- 
-	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "STOCK_ID", nullable = false)
 	public Stock getStock() {
 		return this.stock;
 	}
- 
+
 	public void setStock(Stock stock) {
 		this.stock = stock;
 	}
- 
-	@Column(name = "COMP_NAME", nullable = false, length = 100)
-	public String getCompName() {
-		return this.compName;
+
+	@Column(name = "PRICE_OPEN", precision = 6)
+	public Integer getPriceOpen() {
+		return this.priceOpen;
 	}
- 
-	public void setCompName(String compName) {
-		this.compName = compName;
+
+	public void setPriceOpen(Integer priceOpen) {
+		this.priceOpen = priceOpen;
 	}
- 
-	@Column(name = "COMP_DESC", nullable = false)
-	public String getCompDesc() {
-		return this.compDesc;
+
+	@Column(name = "PRICE_CLOSE")
+	public Integer getPriceClose() {
+		return this.priceClose;
 	}
- 
-	public void setCompDesc(String compDesc) {
-		this.compDesc = compDesc;
+
+	public void setPriceClose(Integer priceClose) {
+		this.priceClose = priceClose;
 	}
- 
-	@Column(name = "REMARK", nullable = false)
-	public String getRemark() {
-		return this.remark;
+
+	@Column(name = "PRICE_CHANGE")
+	public Integer getPriceChange() {
+		return this.priceChange;
 	}
- 
-	public void setRemark(String remark) {
-		this.remark = remark;
+
+	public void setPriceChange(Integer priceChange) {
+		this.priceChange = priceChange;
 	}
- 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "LISTED_DATE", nullable = false, length = 10)
-	public Date getListedDate() {
-		return this.listedDate;
+
+	@Column(name = "VOLUME")
+	public Integer getVolume() {
+		return this.volume;
 	}
- 
-	public void setListedDate(Date listedDate) {
-		this.listedDate = listedDate;
+
+	public void setVolume(Integer volume) {
+		this.volume = volume;
 	}
- 
+
+
+
 }

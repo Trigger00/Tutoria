@@ -20,9 +20,9 @@
 
             <c:forEach var="i" items="${stockDailyRecords}">
                 <tr>
-                    <th>${i.stockId}</th>
-                    <th>${i.compName}</th>
-                    <th>${i.remark}</th>
+                    <th>${i.recordId}</th>
+                    <th>${i.stock.stockId}</th>
+            
                    
                 
                 </tr>

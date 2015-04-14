@@ -21,11 +21,12 @@
             <c:forEach var="i" items="${stocks}">
                 <tr>
                     <th>${i.stockId}</th>
-                    <th>${i.stockCode}</th>
+                    <th>${i.stockName}</th>
+                    
+                    <%--<th>${i.stockCode}</th>
                     <th>${i.stockName}</th>
                     <th>${i.stockDetail.remark}</th>
-                    <th>${i.stockDetail.compName}</th>
-                
+                    <th>${i.stockDetail.compName}</th> --%>
                 </tr>
             </c:forEach>
         </table>
