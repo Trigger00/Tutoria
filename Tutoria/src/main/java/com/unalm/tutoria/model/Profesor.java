@@ -66,7 +66,8 @@ public class Profesor implements Serializable{
 	private Set<ConsejeriaEntity> consejeroEntity = new HashSet<ConsejeriaEntity>(
 			0);
 	
-	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "profesor")
+	private Set<CoordConsejeriaEntity> coordConsejeria = new HashSet<CoordConsejeriaEntity>(0);
 
 	public Profesor() {
 		super();
@@ -190,6 +191,14 @@ public class Profesor implements Serializable{
 
 	public void setConsejeroEntity(Set<ConsejeriaEntity> consejeroEntity) {
 		this.consejeroEntity = consejeroEntity;
+	}
+
+	public Set<CoordConsejeriaEntity> getCoordConsejeria() {
+		return coordConsejeria;
+	}
+
+	public void setCoordConsejeria(Set<CoordConsejeriaEntity> coordConsejeria) {
+		this.coordConsejeria = coordConsejeria;
 	}
 	
 	

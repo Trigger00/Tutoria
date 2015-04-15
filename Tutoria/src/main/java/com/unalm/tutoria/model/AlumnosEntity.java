@@ -72,6 +72,9 @@ public class AlumnosEntity implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "alumnos")
 	private Set<ConsejeriaEntity> consejeria = new HashSet<ConsejeriaEntity>(0);
 
+	
+
+	
 	public String getMatricula() {
 		return matricula;
 	}
@@ -215,5 +218,8 @@ public class AlumnosEntity implements Serializable {
 	public void setConsejeria(Set<ConsejeriaEntity> consejeria) {
 		this.consejeria = consejeria;
 	}
+
+
+	
 
 }
