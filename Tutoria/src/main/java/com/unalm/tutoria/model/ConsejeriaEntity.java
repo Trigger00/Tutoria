@@ -12,31 +12,29 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "consejero", catalog = "oficina")
-public class ConsejeroEntity implements java.io.Serializable {
+@Table(name = "consejeria", catalog = "oficina")
+public class ConsejeriaEntity implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "CICLO", unique = true, nullable = false)
 	private String ciclo;
-	
-	
-	@Column(name = "ESP_CODIGO")
-	private String espCodigo;
-	
+
+	@Column(name = "MATRICULA")
+	private String matricula;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pro_codigo", nullable = false)
 	private Profesor profesor;
-	
-	public ConsejeroEntity() {
+
+	public ConsejeriaEntity() {
 		super();
 	}
 
-	public ConsejeroEntity(String ciclo, String proCodigo, String espCodigo,
-			Profesor profesor) {
+	public ConsejeriaEntity(String ciclo, String matricula, Profesor profesor) {
 		super();
 		this.ciclo = ciclo;
-		this.espCodigo = espCodigo;
+		this.matricula = matricula;
 		this.profesor = profesor;
 	}
 
@@ -48,21 +46,20 @@ public class ConsejeroEntity implements java.io.Serializable {
 		this.ciclo = ciclo;
 	}
 
-
-	public String getEspCodigo() {
-		return espCodigo;
-	}
-
-	public void setEspCodigo(String espCodigo) {
-		this.espCodigo = espCodigo;
-	}
-
 	public Profesor getProfesor() {
 		return profesor;
 	}
 
 	public void setProfesor(Profesor profesor) {
 		this.profesor = profesor;
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
 
 }

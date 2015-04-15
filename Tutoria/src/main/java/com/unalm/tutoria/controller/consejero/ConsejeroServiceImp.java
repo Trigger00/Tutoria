@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.unalm.tutoria.dao.ConsejeroDAO;
-import com.unalm.tutoria.model.ConsejeroEntity;
+import com.unalm.tutoria.model.ConsejeriaEntity;
 
 
 @Service
@@ -17,7 +17,7 @@ public class ConsejeroServiceImp  implements ConsejeroService{
 	@Autowired
 	ConsejeroDAO consejeroDAO;
 	
-	public List<ConsejeroEntity> allConsejero() {
+	public List<ConsejeriaEntity> allConsejero() {
 		return consejeroDAO.list();
 	}
 	

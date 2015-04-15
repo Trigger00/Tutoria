@@ -15,16 +15,17 @@
             <tr>
                 <th>Código</th>
                 <th>Programa</th>
+                <th>Programa</th>
                 <th>Acciones</th>
             </tr>
 
             <c:forEach var="i" items="${consejeros}">
                 <tr>
-                    <th>${i.ciclo}</th>
+                    <th>${i.ciclo}</th>     
+                    <th>${i.matricula}</th>     
                     <th>${i.profesor.pro_codigo}</th>
                     <th>${i.profesor.pro_nom}</th>
-             
-                    
+         
                     <%--<th>${i.stockCode}</th>
                     <th>${i.stockName}</th>
                     <th>${i.stockDetail.remark}</th>

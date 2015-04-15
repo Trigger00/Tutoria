@@ -7,37 +7,37 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.unalm.tutoria.dao.ConsejeroDAO;
-import com.unalm.tutoria.model.ConsejeroEntity;
+import com.unalm.tutoria.model.ConsejeriaEntity;
 
 @Repository
 public class ConsejeroDAOH extends BaseHibernateDAO implements ConsejeroDAO{
 
-	public List<ConsejeroEntity> list() {
+	public List<ConsejeriaEntity> list() {
 		 /*
 		   
 		    Criteria criteria = this.getSession().createCriteria(ConsejeroEntity.class);
 	        return criteria.list();
 	        
 	        */
-	    Criteria criteria = this.getSession().createCriteria(ConsejeroEntity.class)
+	    Criteria criteria = this.getSession().createCriteria(ConsejeriaEntity.class)
 	    		.createAlias("profesor", "p",Criteria.LEFT_JOIN);
 	    criteria.add(Restrictions.eq("p.pro_codigo", "0109"));
-	    criteria.add(Restrictions.eq("espCodigo", "010"));
+	    criteria.add(Restrictions.eq("matricula", "19990045"));
 	    return criteria.list();
 		
 	}
 
-	public ConsejeroEntity get(Long t) {
+	public ConsejeriaEntity get(Long t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void save(ConsejeroEntity t) {
+	public void save(ConsejeriaEntity t) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void update(ConsejeroEntity t) {
+	public void update(ConsejeriaEntity t) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -47,7 +47,7 @@ public class ConsejeroDAOH extends BaseHibernateDAO implements ConsejeroDAO{
 		
 	}
 
-	public ConsejeroEntity findByCodigo(String Codigo) {
+	public ConsejeriaEntity findByCodigo(String Codigo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
