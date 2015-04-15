@@ -3,6 +3,7 @@ package com.unalm.tutoria.dao.hibernate;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.unalm.tutoria.dao.ConsejeroDAO;
@@ -12,8 +13,18 @@ import com.unalm.tutoria.model.ConsejeroEntity;
 public class ConsejeroDAOH extends BaseHibernateDAO implements ConsejeroDAO{
 
 	public List<ConsejeroEntity> list() {
-		  Criteria criteria = this.getSession().createCriteria(ConsejeroEntity.class);
+		 /*
+		   
+		    Criteria criteria = this.getSession().createCriteria(ConsejeroEntity.class);
 	        return criteria.list();
+	        
+	        */
+	    Criteria criteria = this.getSession().createCriteria(ConsejeroEntity.class)
+	    		.createAlias("profesor", "p",Criteria.LEFT_JOIN);
+	    criteria.add(Restrictions.eq("p.pro_codigo", "0109"));
+	    criteria.add(Restrictions.eq("espCodigo", "010"));
+	    return criteria.list();
+		
 	}
 
 	public ConsejeroEntity get(Long t) {
