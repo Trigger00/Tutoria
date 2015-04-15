@@ -19,18 +19,9 @@
                 <th>Acciones</th>
             </tr>
 
-            <c:forEach var="i" items="${consejeros}">
+            <c:forEach var="i" items="${alumnos}">
                 <tr>
-                    <th>${i.ciclo}</th>     
-                    <th>${i.profesor.pro_codigo}</th>
-                    <th>${i.profesor.pro_nom}</th>
-                    <th>${i.alumnos.matricula}</th>
-                    <th>${i.alumnos.alu_nombre}</th>
-      
-                    <%--<th>${i.stockCode}</th>
-                    <th>${i.stockName}</th>
-                    <th>${i.stockDetail.remark}</th>
-                    <th>${i.stockDetail.compName}</th> --%>
+                    <th>${i.matricula}</th>     
                 </tr>
             </c:forEach>
         </table>

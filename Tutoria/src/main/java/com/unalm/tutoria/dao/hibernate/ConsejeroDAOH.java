@@ -20,9 +20,10 @@ public class ConsejeroDAOH extends BaseHibernateDAO implements ConsejeroDAO{
 	        
 	        */
 	    Criteria criteria = this.getSession().createCriteria(ConsejeriaEntity.class)
-	    		.createAlias("profesor", "p",Criteria.LEFT_JOIN);
+	    		.createAlias("profesor", "p",Criteria.LEFT_JOIN)
+	    .createAlias("alumnos", "a",Criteria.LEFT_JOIN);
 	    criteria.add(Restrictions.eq("p.pro_codigo", "0109"));
-	    criteria.add(Restrictions.eq("matricula", "19990045"));
+	    criteria.add(Restrictions.eq("alumnos.matricula", "19990045"));
 	    return criteria.list();
 		
 	}

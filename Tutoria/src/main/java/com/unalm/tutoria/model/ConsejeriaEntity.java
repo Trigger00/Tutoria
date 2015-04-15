@@ -20,9 +20,12 @@ public class ConsejeriaEntity implements java.io.Serializable {
 	@Column(name = "CICLO", unique = true, nullable = false)
 	private String ciclo;
 
-	@Column(name = "MATRICULA")
-	private String matricula;
+	@JoinColumn(name = "matricula", referencedColumnName = "matricula")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private AlumnosEntity alumnos;
 
+	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pro_codigo", nullable = false)
 	private Profesor profesor;
@@ -31,10 +34,11 @@ public class ConsejeriaEntity implements java.io.Serializable {
 		super();
 	}
 
-	public ConsejeriaEntity(String ciclo, String matricula, Profesor profesor) {
+	public ConsejeriaEntity(String ciclo, AlumnosEntity alumnos,
+			Profesor profesor) {
 		super();
 		this.ciclo = ciclo;
-		this.matricula = matricula;
+		this.alumnos = alumnos;
 		this.profesor = profesor;
 	}
 
@@ -54,12 +58,12 @@ public class ConsejeriaEntity implements java.io.Serializable {
 		this.profesor = profesor;
 	}
 
-	public String getMatricula() {
-		return matricula;
+	public AlumnosEntity getAlumnos() {
+		return alumnos;
 	}
 
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
+	public void setAlumnos(AlumnosEntity alumnos) {
+		this.alumnos = alumnos;
 	}
 
 }
